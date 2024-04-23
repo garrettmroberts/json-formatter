@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Table from './components/Table/Table';
+import sampleTodos from './data/sampleTodosLarge.json';
+import Button from './components/Button/Button';
+
+type AppState = {
+  data: { [key: string]: any }[],
+  keys: string[]
+}
 
 function App() {
+  const [state, setState] = useState<AppState>({
+    data: [],
+    keys: []
+  })
+
+  useEffect(() => {
+    setState({
+      data: sampleTodos,
+      keys: Object.keys(sampleTodos[0])
+    })
+  }, [])
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="app-container">
+        <Table keys={state.keys} data={state.data} />
+        <div className="footer">
+          <Button onClick={() => console.log('sort')} text="Sort" />
+          <Button onClick={() => console.log('filter')} text="Filter" />
+          <Button onClick={() => console.log('uploading file')} text="Upload file" />
+          <Button onClick={() => console.log('downloading file')} text="Download file" />
+        </div>
+      </div>
     </div>
   );
 }

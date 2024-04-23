@@ -1,0 +1,21 @@
+th, td {
+  padding: 5px 15px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    display: block;
+    max-height: 75vh;
+    overflow: scroll;
+}
+
+.table-header {
+    background-color: #4f3b78;
+    position: sticky;
+    top: 0;
+}
+
+.table-header th:first-of-type {
+   border-top-left-radius: 5px;
+}
