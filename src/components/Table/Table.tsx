@@ -8,6 +8,7 @@ interface TableProps {
 
 const Table: FC<TableProps> = ({ keys, data }) => {
     return (
+        <div className="table-container">
         <table className="table">
             <thead className="table-header">
                 <tr>
@@ -16,7 +17,7 @@ const Table: FC<TableProps> = ({ keys, data }) => {
                     ))}
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="table-body">
                 {data.map((row, rowIndex) => (
                     <tr key={rowIndex}>
                         {keys.map((key, colIndex) => (
@@ -26,6 +27,8 @@ const Table: FC<TableProps> = ({ keys, data }) => {
                 ))}
             </tbody>
         </table>
+
+        </div>
     )
 }
 

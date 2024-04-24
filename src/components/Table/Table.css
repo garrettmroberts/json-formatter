@@ -1,21 +1,24 @@
-th, td {
-  padding: 5px 15px;
+.table-container {
+  max-height: 75vh;
+  overflow: auto;
 }
 
 .table {
-    width: 100%;
-    border-collapse: collapse;
-    display: block;
-    max-height: 75vh;
-    overflow: scroll;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 5px 15px;
+  text-align: left;
+  vertical-align: top;
 }
 
 .table-header {
-    background-color: #4f3b78;
-    position: sticky;
-    top: 0;
-}
-
-.table-header th:first-of-type {
-   border-top-left-radius: 5px;
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #4f3b78;
 }
