@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
   background-color: #282c34;
@@ -20,7 +25,19 @@
 .footer {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 25px;
   margin-top: 25px;
+}
+
+.footer-container {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.selection-text {
+  font-size: 13px;
+  margin-top: 10px;
 }

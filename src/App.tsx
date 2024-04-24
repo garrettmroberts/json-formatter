@@ -3,6 +3,7 @@ import './App.css';
 import Table from './components/Table/Table';
 import sampleTodos from './data/sampleTodosLarge.json';
 import Button from './components/Button/Button';
+import Dropdown from './components/Dropdown/Dropdown';
 
 type AppState = {
   data: { [key: string]: any }[],
@@ -14,6 +15,8 @@ function App() {
     data: [],
     keys: []
   })
+
+  const [sortSelection, setSortSelection] = useState<string>("");
 
   useEffect(() => {
     setState({
@@ -28,10 +31,14 @@ function App() {
       <div className="app-container">
         <Table keys={state.keys} data={state.data} />
         <div className="footer">
-          <Button onClick={() => console.log('sort')} text="Sort" />
-          <Button onClick={() => console.log('filter')} text="Filter" />
-          <Button onClick={() => console.log('uploading file')} text="Upload file" />
-          <Button onClick={() => console.log('downloading file')} text="Download file" />
+          <div className="footer-container">
+            <Button onClick={() => console.log('uploading file')} text="Upload file" />
+            <Button onClick={() => console.log('downloading file')} text="Download file" />
+          </div>
+          <div className="footer-container">
+            <p className="selection-text">Sort by: </p>
+            <Dropdown options={state.keys} selected={sortSelection} setSelected={setSortSelection} />
+          </div>
         </div>
       </div>
     </div>
