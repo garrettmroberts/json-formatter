@@ -41,3 +41,7 @@
   font-size: 13px;
   margin-top: 10px;
 }
+
+.hidden-file-upload {
+  display: none;
+}

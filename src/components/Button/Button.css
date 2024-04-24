@@ -8,6 +8,11 @@
   transition: background-color 0.3s ease;
   font-family: 'space mono', monospace;
   font-size: 13px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 
 .button:hover {
