@@ -1,12 +1,12 @@
 {
-  "name": "json-reformat",
+  "name": "json-formatter",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "npx ts-node index.ts",
+    "start": "npx ts-node server/index.ts",
     "build": "npx tsc",
-    "dev": "nodemon index.ts",
+    "dev": "nodemon server/index.ts",
     "prepare": "husky install",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "typescript": "^5.4.5"
   },

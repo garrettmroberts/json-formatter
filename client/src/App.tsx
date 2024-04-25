@@ -74,8 +74,8 @@ function App() {
   };
 
   const handleFileDownload = (): void => {
-    if (file && fileContents) {
-      const fileName = file.name;
+    if (fileContents) {
+      const fileName = file?.name || 'sampleFile.json';
       const json = JSON.stringify(fileContents, null, 2);
       const blob = new Blob([json], {type: 'application/json'});
       const href = URL.createObjectURL(blob);
@@ -89,6 +89,21 @@ function App() {
       document.body.removeChild(link);
       URL.revokeObjectURL(href);
     }
+  };
+
+  const openSampleFile = async (): Promise<void> => {
+    const res = await fetch('http://localhost:8080/api/sample-json?size=large');
+    const json = await res.json();
+    setState({
+      keys: Object.keys(json[0]),
+      data: json,
+    });
+    const file = new File([json], 'sampleFile.json', {
+      type: 'application/json',
+    });
+    setFileContents(json);
+    setFile(file);
+    setIsDownloadEnabled(true);
   };
 
   return (
@@ -110,6 +125,7 @@ function App() {
               text="Download file"
               disabled={!isDownloadEnabled}
             />
+            <Button onClick={openSampleFile} text="Open sample file" />
           </div>
           <div className="footer-container">
             <p className="selection-text">Sort by: </p>
