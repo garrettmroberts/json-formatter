@@ -6,21 +6,30 @@ import {faCaretDown} from '@fortawesome/free-solid-svg-icons';
 
 interface DropdownProps {
   options: string[];
+  selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
+  sortOrder: 'asc' | 'desc';
+  setSortOrder: Dispatch<SetStateAction<'asc' | 'desc'>>;
 }
 
-const Dropdown: FC<DropdownProps> = ({options, setSelected}) => {
+const Dropdown: FC<DropdownProps> = ({options, selected, setSelected, sortOrder, setSortOrder,}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelection = (event: MouseEvent<HTMLDivElement>) => {
-    setSelected((event.target as HTMLElement).textContent || 'id');
+    const newValue = (event.target as HTMLElement).textContent || 'id';
+    if (newValue == selected) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortOrder('asc');
+    }
+    setSelected(newValue);
     setIsOpen(false);
   };
 
   return (
     <div className="dropdown">
       <div className="dropdown-button" onClick={() => setIsOpen(!isOpen)}>
-        Choose one
+        {selected == '' ? 'Choose one' : selected}
         <FontAwesomeIcon icon={faCaretDown} />
       </div>
       {isOpen && (

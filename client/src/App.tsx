@@ -23,28 +23,37 @@ function App() {
   const [fileContents, setFileContents] =
     useState<{[key: string]: string | number | boolean}[]>();
   const [isDownloadEnabled, setIsDownloadEnabled] = useState<boolean>(false);
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
 
   const hiddenFileInput = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    setState({
-      data: sampleTodos,
-      keys: Object.keys(sampleTodos[0]),
-    });
-  }, []);
+  // useEffect(() => {
+  //   setState({
+  //     data: sampleTodos,
+  //     keys: Object.keys(sampleTodos[0]),
+  //   });
+  // }, []);
 
   useEffect(() => setIsDownloadEnabled(file?.name !== undefined), [file]);
 
   useEffect(() => {
     setState(prevState => {
-      return {
-        data: prevState.data.sort((a, b) =>
+      let sortedData;
+      if (sortOrder === 'asc') {
+        sortedData = prevState.data.sort((a, b) =>
           a[sortSelection] > b[sortSelection] ? 1 : -1,
-        ),
+        )
+      } else {
+        sortedData = prevState.data.sort((a, b) =>
+          a[sortSelection] > b[sortSelection] ? -1 : 1,
+        )
+      }
+      return {
+        data: sortedData,
         keys: prevState.keys,
       };
     });
-  }, [sortSelection]);
+  }, [sortSelection, sortOrder]);
 
   const handleFileUpload = async (
     event: ChangeEvent<HTMLInputElement>,
@@ -129,7 +138,7 @@ function App() {
           </div>
           <div className="footer-container">
             <p className="selection-text">Sort by: </p>
-            <Dropdown options={state.keys} setSelected={setSortSelection} />
+            <Dropdown options={state.keys} selected={sortSelection} setSelected={setSortSelection} sortOrder={sortOrder} setSortOrder={setSortOrder} />
           </div>
         </div>
       </div>
