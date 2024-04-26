@@ -17,7 +17,7 @@ const Dropdown: FC<DropdownProps> = ({options, selected, setSelected, sortOrder,
 
   const handleSelection = (event: MouseEvent<HTMLDivElement>) => {
     const newValue = (event.target as HTMLElement).textContent || 'id';
-    if (newValue == selected) {
+    if (newValue === selected) {
       setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     } else {
       setSortOrder('asc');
@@ -29,7 +29,7 @@ const Dropdown: FC<DropdownProps> = ({options, selected, setSelected, sortOrder,
   return (
     <div className="dropdown">
       <div className="dropdown-button" onClick={() => setIsOpen(!isOpen)}>
-        {selected == '' ? 'Choose one' : selected}
+        {selected === '' ? 'Choose one' : selected}
         <FontAwesomeIcon icon={faCaretDown} />
       </div>
       {isOpen && (

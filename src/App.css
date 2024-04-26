@@ -22,16 +22,16 @@
   width: 95vw;
 }
 
-.footer {
+.header {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 25px;
-  margin-top: 25px;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
-.footer-container {
+.header-container {
   display: flex;
   gap: 25px;
   align-items: flex-start;

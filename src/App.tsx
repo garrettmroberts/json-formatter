@@ -101,7 +101,7 @@ function App() {
   };
 
   const openSampleFile = async (): Promise<void> => {
-    const res = await fetch('http://localhost:8080/api/sample-json?size=large');
+    const res = await fetch('/api/sample-json?size=large');
     const json = await res.json();
     setState({
       keys: Object.keys(json[0]),
@@ -118,9 +118,8 @@ function App() {
   return (
     <div className="App">
       <div className="app-container">
-        <Table keys={state.keys} data={state.data} />
-        <div className="footer">
-          <div className="footer-container">
+        <div className="header">
+          <div className="header-container">
             <input
               className="hidden-file-upload"
               type="file"
@@ -136,11 +135,12 @@ function App() {
             />
             <Button onClick={openSampleFile} text="Open sample file" />
           </div>
-          <div className="footer-container">
+          <div className="header-container">
             <p className="selection-text">Sort by: </p>
             <Dropdown options={state.keys} selected={sortSelection} setSelected={setSortSelection} sortOrder={sortOrder} setSortOrder={setSortOrder} />
           </div>
         </div>
+        <Table keys={state.keys} data={state.data} />
       </div>
     </div>
   );

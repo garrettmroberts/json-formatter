@@ -5,7 +5,7 @@
 
 .dropdown,
 .dropdown-content {
-  display: absolute;
+  position: absolute;
 }
 
 .dropdown-button {
@@ -30,6 +30,7 @@
   background-color: #927fbf;
   margin-top: 5px;
   border-radius: 4px;
+  z-index: 2;
 }
 
 .dropdown-option {
