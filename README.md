@@ -2,7 +2,7 @@
 
 JSON formatter is an application that allows a user to upload a json file, reorder the elements, and download the updated file.  It was built using React, Typescript, and Express and is hosted using Vercel.
 
-![JSON formatter screenshot](https://github.com/garrettmroberts/wegusta-app/blob/main/public/screenshot.png)
+![JSON formatter screenshot](https://github.com/garrettmroberts/json-formatter/blob/main/public/screenshot.png)
 
 ## Built with
 
